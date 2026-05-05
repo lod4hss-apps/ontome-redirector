@@ -36,7 +36,7 @@ if ($httpCode !== 200) {
 }
 
 $data = json_decode($response, true);
-$target = $data['ontome_uri'] ?? null;
+$target = isset($data['ontome_uri']) ? $data['ontome_uri'] : null;
 
 if ($target && filter_var($target, FILTER_VALIDATE_URL)) {
     header("Location: " . $target, true, 302);
